@@ -5,7 +5,7 @@ canvas.setAttribute("id", "bg");
 canvas.width  = window.innerWidth;
 canvas.height = window.innerHeight;
 
-const SNOW_COLOR = "rgba(235,235,235,0.8)";
+const SNOW_COLOR = "rgba(235,235,235,0.7)";
 const BACKGROUND_COLOR = "#1c0030";
 
 let ctx = canvas.getContext('2d');
@@ -41,7 +41,7 @@ function step(timestamp) {
         element.draw();
     });
 
-    spawnParticles(5);
+    spawnParticles(12);
 
     window.requestAnimationFrame(step);
 }
@@ -54,9 +54,9 @@ const Particle = function(x, y, color)
     particle.x = x;
     particle.y = y;
     particle.dy = 1 + (Math.random()*3);
-    particle.dx = -1 + (Math.random()*2);
+    particle.dx = -1 + (Math.random()*4);
     particle.color = SNOW_COLOR;
-    particle.size = 2 + Math.floor(Math.random()*2);
+    particle.size = 2 + Math.floor(Math.random()*3);
     particle.draw = function()
     {
         ctx.beginPath();
@@ -81,3 +81,4 @@ function spawnParticles(amount) {
         particles.push(Particle(randomInt(0, canvas.width), 0, 'rgba(235, 235, 235, 0.8)'));
     }
 }
+
